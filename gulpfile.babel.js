@@ -46,7 +46,7 @@ gulp.task('browserify', () => {
 
 });
 
-gulp.task('serve', ['lint', 'browserify'], () => {
+gulp.task('serve', ['browserify', 'lint'], () => {
   browserSync({
     notify: true,
     port: 9000,
@@ -69,6 +69,6 @@ gulp.task('serve', ['lint', 'browserify'], () => {
     '.tmp/scripts/**/*.js'
   ]).on('change', reload);
 
-  gulp.watch('src/js/**/*.js', ['lint']);
+  gulp.watch('app/js/**/*.js', ['lint']);
 });
 

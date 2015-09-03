@@ -1,7 +1,14 @@
+import {gameSettings} from './config';
+import mainState from './states/mainState';
+
 class Game extends Phaser.Game {
   constructor() {
-    super(800, 600, Phaser.AUTO, '', null);
+    super(gameSettings.width, gameSettings.height, Phaser.AUTO, 'gameContainer');
+
+    this.state.add('main', mainState);
+    this.state.start('main');
   }
+
 }
 
 new Game();

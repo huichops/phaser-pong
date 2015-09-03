@@ -1,0 +1,33 @@
+{
+  "gameSettings": {
+    "width": 800,
+    "height": 600
+  },
+
+  "assets": {
+    "sound": {
+      "bounce": {
+        "url": "assets/ballBounce",
+        "name": "ballBounceSond"
+      },
+      "hit": {
+        "url": "assets/ballHit",
+        "name": "ballHitSound"
+      },
+      "miss": {
+        "url": "assets/ballMissed",
+        "name": "ballMissSound"
+      }
+    },
+    "graphic": {
+      "ball": {
+        "url": "assets/ball.png",
+        "name": "ballImage"
+      },
+      "paddle": {
+        "url": "assets/paddle.png",
+        "name": "paddleImage"
+      }
+    }
+  }
+}
