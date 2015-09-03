@@ -21,10 +21,14 @@ class MainState extends Phaser.State {
   create() {
     this.initGraphics();
     this.initPhysics();
+    this.initKeyboard();
+    this.ball.restart();
+
   }
 
   update() {
-    console.log(this.ball.body.velocity);
+    this.player1.update();
+    this.player2.update();
   }
 
   initGraphics() {
@@ -41,8 +45,14 @@ class MainState extends Phaser.State {
 
   initPhysics() {
     this.game.physics.startSystem(Phaser.Physics.ARCADE);
-    
     this.ball.initPhysics();
+    this.player1.initPhysics();
+    this.player2.initPhysics();
+  }
+
+  initKeyboard() {
+    this.player1.setKeys(Phaser.Keyboard.A, Phaser.Keyboard.Z);
+    this.player2.setKeys(Phaser.Keyboard.UP, Phaser.Keyboard.DOWN);
   }
 
 }
