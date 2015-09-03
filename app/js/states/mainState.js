@@ -6,9 +6,6 @@ import Background from '../objects/Background';
 class MainState extends Phaser.State {
 
   preload() {
-
-    console.log('preloading');
-
     this.game.load.image(ballAssets.graphic.ball.name, ballAssets.graphic.ball.url);
     this.game.load.image(paddleAssets.graphic.paddle.name, paddleAssets.graphic.paddle.url);
 
@@ -24,11 +21,33 @@ class MainState extends Phaser.State {
     this.initKeyboard();
     this.ball.restart();
 
+    this.players = this.game.add.group();
+    this.players.add(this.player1);
+    this.players.add(this.player2);
   }
 
   update() {
     this.player1.update();
     this.player2.update();
+
+    this.game.physics.arcade.overlap(this.ball, this.players, this.playerCollide, null, this);
+  }
+
+  playerCollide(ball, player) {
+    var angle = 0;
+    var sign = 0;
+    var angleDiff = gameSettings.maxAngle / player.body.halfHeight;
+    var diff = ball.y - player.y;
+
+    angle = angleDiff * diff;
+    // get the diff sign
+    sign = diff? diff<0? -1:1:0;
+
+    if (player.x > this.game.world.centerX) {
+      angle = 180 - angle;
+    }
+
+    this.game.physics.arcade.velocityFromAngle(angle, this.ball.speed, this.ball.body.velocity);
   }
 
   initGraphics() {
@@ -48,6 +67,7 @@ class MainState extends Phaser.State {
     this.ball.initPhysics();
     this.player1.initPhysics();
     this.player2.initPhysics();
+
   }
 
   initKeyboard() {

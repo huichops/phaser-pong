@@ -2,11 +2,12 @@ var settings = {
 gameSettings: {
     width: 640,
     height: 480,
+    maxAngle: 45,
     player1: {
-      x: 20
+      x: 40
     },
     player2: {
-      x: 620
+      x: 600
     }
   },
   assets: {

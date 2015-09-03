@@ -2,7 +2,7 @@ import {gameSettings, ballAssets} from '../config';
 
 class Ball extends Phaser.Sprite {
 
-  constructor(game, x, y, speed = 300, delay = 2) {
+  constructor(game, x, y, speed = 500, delay = 2) {
     super(game, x, y, ballAssets.graphic.ball.name);
 
     this.speed = speed;
@@ -19,13 +19,12 @@ class Ball extends Phaser.Sprite {
 
   }
 
-  
   initPhysics() {
     this.game.physics.enable(this);
     this.checkWorldBounds = true;
     this.body.collideWorldBounds = true;
     this.body.immovable = true;
-    this.body.bounce.set(1.01);
+    this.body.bounce.set(1);
   }
 
   create() {

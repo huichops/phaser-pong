@@ -18,6 +18,7 @@ class Paddle extends Phaser.Sprite {
     } else {
       this.stop();
     }
+
   }
 
   initPhysics() {
@@ -31,6 +32,7 @@ class Paddle extends Phaser.Sprite {
     this.up = this.game.input.keyboard.addKey(upKey);
     this.down = this.game.input.keyboard.addKey(downKey);
   }
+
 
   // Helper methods
   isMovingUp() {
